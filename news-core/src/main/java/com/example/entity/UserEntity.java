@@ -1,8 +1,8 @@
 package com.example.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class UserEntity extends BaseEntity{
@@ -19,6 +19,12 @@ public class UserEntity extends BaseEntity{
 
     @Column
     private int status;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = {
+            @JoinColumn(name = "user_id", nullable = false) }, inverseJoinColumns = {
+            @JoinColumn(name = "role_id", nullable = false) })
+    private List<RoleEntity> roles;
 
     public String getUserName() {
         return userName;
@@ -52,4 +58,11 @@ public class UserEntity extends BaseEntity{
         this.status = status;
     }
 
+    public List<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleEntity> roles) {
+        this.roles = roles;
+    }
 }

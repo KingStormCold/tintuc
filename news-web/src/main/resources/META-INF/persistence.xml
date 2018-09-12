@@ -5,9 +5,8 @@
         <class>com.example.entity.BaseEntity</class>
         <class>com.example.entity.CommentEntity</class>
         <class>com.example.entity.NewEntity</class>
-
-        <!--<class>com.example.entity.RoleEntity</class>
-        <class>com.example.entity.CategoryEntity</class>&ndash;&gt;-->
+        <class>com.example.entity.RoleEntity</class>
+        <class>com.example.entity.CategoryEntity</class>
     </persistence-unit>
 </persistence>
 
