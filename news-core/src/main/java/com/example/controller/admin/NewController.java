@@ -28,7 +28,7 @@ public class NewController {
         ModelAndView mav = new ModelAndView("admin/new/list");
         DisplayTagUtils.initSearchBean(request,model);
         Pageable pageable = (Pageable) new PageRequest(model.getPage() - 1,model.getMaxPageItems());
-        List<NewDTO> news = newService.getNews(pageable);
+        List<NewDTO> news = newService.getNews(model.getSearchValue(),pageable);
         model.setListResult(news);
         model.setTotalItems(newService.getTotalItems());
         mav.addObject(SystemConstant.MODEL,model);

@@ -35,7 +35,7 @@ public class NewService implements INewService {
     }
 
     @Override
-    public List<NewDTO> getNews(Pageable pageable) {
+    public List<NewDTO> getNews(String searchValue,Pageable pageable) {
         List<NewDTO> result = new ArrayList<>();
         Page<NewEntity> newsPage = newRepository.findAll(pageable);
         for (NewEntity item : newsPage.getContent()) {

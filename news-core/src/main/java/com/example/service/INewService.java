@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface INewService {
     List<NewDTO> getAll();
-    List<NewDTO> getNews(Pageable pageable);
+    List<NewDTO> getNews(String searchValue ,Pageable pageable);
     int getTotalItems();
 }
