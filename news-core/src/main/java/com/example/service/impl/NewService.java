@@ -37,16 +37,27 @@ public class NewService implements INewService {
     @Override
     public List<NewDTO> getNews(String searchValue,Pageable pageable) {
         List<NewDTO> result = new ArrayList<>();
-        Page<NewEntity> newsPage = newRepository.findAll(pageable);
+        Page<NewEntity> newsPage = null;
+        if (searchValue != null) {
+            newsPage = newRepository.findByTitleContainingIgnoreCase(searchValue, pageable);
+        } else {
+            newsPage = newRepository.findAll(pageable);
+        }
         for (NewEntity item : newsPage.getContent()) {
-            NewDTO newDTO =newConverter.convertToDto(item);
+            NewDTO newDTO = newConverter.convertToDto(item);
             result.add(newDTO);
         }
         return result;
     }
 
     @Override
-    public int getTotalItems() {
-        return (int) newRepository.count();
+    public int getTotalItems(String searchValue) {
+        int totalItem = 0;
+        if (searchValue != null) {
+            totalItem = (int) newRepository.countByTitleContainingIgnoreCase(searchValue);
+        } else {
+            totalItem = (int) newRepository.count();
+        }
+        return totalItem;
     }
 }

@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface INewRepository extends JpaRepository<NewEntity,Long> {
     Page<NewEntity> findByTitleContainingIgnoreCase(String searchValue, Pageable pageable);
+    long countByTitleContainingIgnoreCase(String searchValue);
 }

@@ -30,8 +30,9 @@ public class NewController {
         Pageable pageable = (Pageable) new PageRequest(model.getPage() - 1,model.getMaxPageItems());
         List<NewDTO> news = newService.getNews(model.getSearchValue(),pageable);
         model.setListResult(news);
-        model.setTotalItems(newService.getTotalItems());
+        model.setTotalItems(newService.getTotalItems(model.getSearchValue()));
         mav.addObject(SystemConstant.MODEL,model);
+
         return mav;
     }
 }

@@ -9,5 +9,5 @@ import java.util.List;
 public interface INewService {
     List<NewDTO> getAll();
     List<NewDTO> getNews(String searchValue ,Pageable pageable);
-    int getTotalItems();
+    int getTotalItems(String searchValue);
 }

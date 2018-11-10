@@ -7,8 +7,8 @@ import java.util.List;
 @Table(name = "category")
 public class CategoryEntity extends BaseEntity {
 
-	private static final long serialVersionUID = 3050640464816933435L;
 
+	private static final long serialVersionUID = 6868402481298352095L;
 	@Column
 	private String name;
 

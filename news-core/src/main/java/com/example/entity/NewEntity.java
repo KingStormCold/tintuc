@@ -6,8 +6,8 @@ import javax.persistence.*;
 @Table(name = "new")
 public class NewEntity extends BaseEntity{
 
-    private static final long serialVersionUID = -5633320242625747426L;
 
+    private static final long serialVersionUID = -3722083590559069625L;
     @Column
     private String code;
 
