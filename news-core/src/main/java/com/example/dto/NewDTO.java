@@ -1,5 +1,7 @@
 package com.example.dto;
 
+import java.util.Map;
+
 public class NewDTO extends AbstractDTO<NewDTO> {
     private static final long serialVersionUID = 8084355029408184404L;
     private String code;
@@ -8,6 +10,7 @@ public class NewDTO extends AbstractDTO<NewDTO> {
     private String content;
     private String shortDescription;
     private int view;
+    private Map<String,String> categories;
 
     public String getCode() {
         return code;
@@ -55,5 +58,13 @@ public class NewDTO extends AbstractDTO<NewDTO> {
 
     public void setView(int view) {
         this.view = view;
+    }
+
+    public Map<String, String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Map<String, String> categories) {
+        this.categories = categories;
     }
 }

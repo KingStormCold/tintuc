@@ -55,7 +55,7 @@
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
-    <!--<servlet>
+    <servlet>
         <servlet-name>ConnectorServlet</servlet-name>
         <servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
         <init-param>
@@ -79,7 +79,7 @@
         </url-pattern>
     </servlet-mapping>
 
-    <jsp-config>
+  <!--  <jsp-config>
         <taglib>
             <taglib-uri>customelfunction</taglib-uri>
             <taglib-location>/WEB-INF/elcustom/customelfunction.tld</taglib-location>

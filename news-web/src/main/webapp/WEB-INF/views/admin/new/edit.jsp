@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right">Loại bài viết</label>
                             <div class="col-sm-9">
-                                <form:select path="categoryCode" id="category">
+                                <form:select path="code" id="category">
                                     <form:option value="NONE" label="--- Chọn loại bài viết ---"/>
                                     <form:options items="${model.categories}" />
                                 </form:select>
@@ -108,7 +108,11 @@
     </div>
 </div>
 <script>
-
+    var editor = '';
+    $(document).ready(function () {
+        editor = CKEDITOR.replace('content');
+        CKFinder.setupCKEditor( editor, '${pageContext.request.contextPath}/ckfinder/' );
+    })
 </script>
 </body>
 </html>
