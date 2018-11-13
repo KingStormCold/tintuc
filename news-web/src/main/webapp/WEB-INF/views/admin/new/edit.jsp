@@ -60,14 +60,13 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right">Xem trước</label>
                             <div class="col-sm-9">
-                                <%--<c:if test="${not empty model.thumbnail}">
+                                <c:if test="${not empty model.thumbnail}">
                                     <c:set var="image" value="/repository/${model.thumbnail}"/>
-                                    <img src="${image}" id="viewImage" width="150px" height="150px">
+                                    <img src="#" id="viewImage" width="150px" height="150px">
                                 </c:if>
                                 <c:if test="${empty model.thumbnail}">
                                     <img src="<c:url value='/image/no-image.png'/>" id="viewImage" width="150px" height="150px">
-                                </c:if>--%>
-                                    <img src="<c:url value='/image/no-image.png'/>" id="viewImage" width="150px" height="150px">
+                                </c:if>
                             </div>
                         </div>
                         <br/>
@@ -112,7 +111,23 @@
     $(document).ready(function () {
         editor = CKEDITOR.replace('content');
         CKFinder.setupCKEditor( editor, '${pageContext.request.contextPath}/ckfinder/' );
-    })
+
+        $('#uploadImage').change(function () {
+            openImage(this,"viewImage");
+        });
+    });
+
+    function openImage(input, imageView) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#' +imageView).attr('src', reader.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
 </script>
 </body>
 </html>
