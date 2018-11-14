@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp"%>
+<c:url var="formUrl" value="/api/admin/new"/>
 <html>
 <head>
     <title>Chỉnh sửa bài viết</title>
@@ -34,7 +35,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label no-padding-right">Loại bài viết</label>
                             <div class="col-sm-9">
-                                <form:select path="code" id="category">
+                                <form:select path="categoryCode" id="category">
                                     <form:option value="NONE" label="--- Chọn loại bài viết ---"/>
                                     <form:options items="${model.categories}" />
                                 </form:select>
@@ -127,6 +128,54 @@
         }
     }
 
+    $("#btnAddOrUpdateNews").click(function (event) {
+        event.preventDefault();//neu hk co no se submit vao admin/new/edit chu hk phai vao restAPI
+        var dataArray = {};
+        dataArray["categoryCode"] = $('#categoryCode').val();
+        dataArray["title"] = $('#title').val();
+        dataArray["content"] = $('#content').val();
+        dataArray["shortDescription"] = $('#shortDescription').val();
+        var files = $('#uploadImage')[0].file[0];
+        if(file == undefined){
+            //update method
+            dataArray["imageName"] = "";
+            updateNew(dataArray,$('#newId').val());
+        }else{
+            dataArray["imageName"] = files.name;
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                dataArray["thumbnailBase64"] = e.target.result;
+                var id = $('#newId').val();
+                if(id == "") {
+                    addNew(dataArray);
+                }else {
+                    updateNew(dataArray,id);
+                }
+            }
+            reader.readAsDataURL(files);
+        }
+    });
+
+    function addNew(data) {
+        $.ajax({
+            url: '${formUrl}',
+            type: 'POST',
+            dataType: 'json',
+            contentType:'application/json',
+            data: JSON.stringify(data),
+            success: function(res) {
+                window.location.href = "<c:url value='/admin/new/list?message=insert_success'/>";
+            },
+            error: function(res) {
+                console.log(res);
+                window.location.href = "<c:url value='/admin/new/list?message=error_system'/>";
+            }
+        });
+    }
+
+    function updateNew(data,id) {
+
+    }
 
 </script>
 </body>

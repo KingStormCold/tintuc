@@ -11,6 +11,9 @@ public class NewDTO extends AbstractDTO<NewDTO> {
     private String shortDescription;
     private int view;
     private Map<String,String> categories;
+    private String categoryCode;
+    private String imageName;
+    private String thumbnailBase64;
 
     public String getCode() {
         return code;
@@ -66,5 +69,29 @@ public class NewDTO extends AbstractDTO<NewDTO> {
 
     public void setCategories(Map<String, String> categories) {
         this.categories = categories;
+    }
+
+    public String getCategoryCode() {
+        return categoryCode;
+    }
+
+    public void setCategoryCode(String categoryCode) {
+        this.categoryCode = categoryCode;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getThumbnailBase64() {
+        return thumbnailBase64;
+    }
+
+    public void setThumbnailBase64(String thumbnailBase64) {
+        this.thumbnailBase64 = thumbnailBase64;
     }
 }
