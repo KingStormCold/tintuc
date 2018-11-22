@@ -10,4 +10,5 @@ public interface INewService {
     List<NewDTO> getAll();
     List<NewDTO> getNews(String searchValue ,Pageable pageable);
     int getTotalItems(String searchValue);
+    NewDTO insert(NewDTO newDTO);
 }

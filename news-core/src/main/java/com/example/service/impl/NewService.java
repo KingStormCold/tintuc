@@ -60,4 +60,10 @@ public class NewService implements INewService {
         }
         return totalItem;
     }
+
+    @Override
+    public NewDTO insert(NewDTO newDTO) {
+
+        return null;
+    }
 }
